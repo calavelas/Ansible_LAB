@@ -1,0 +1,22 @@
+---
+- name: Show arp
+  hosts: LAB
+  gather_facts: false
+  connection: local
+
+  roles:
+    - name ansible-network.cisco_ios
+      function: config_manager/get
+      
+  tasks:
+    - name: run multiple commands on remote nodes
+      ios_command:
+        commands:
+          - show ip arp
+
+      register: print_output
+
+    -  debug: var=print_output.stdout_lines
+
+    - name: save output to a file
+      copy: content="{{ print_output.stdout[0] }}" dest="/private/etc/ansible/arp/{{ inventory_hostname }}.txt"

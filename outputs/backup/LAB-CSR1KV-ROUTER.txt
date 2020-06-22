@@ -1,0 +1,194 @@
+Building configuration...
+
+Current configuration : 3909 bytes
+!
+! Last configuration change at 00:00:23 UTC Mon Jun 22 2020 by cisco
+!
+version 16.9
+service timestamps debug datetime msec
+service timestamps log datetime msec
+platform qfp utilization monitor load 80
+no platform punt-keepalive disable-kernel-core
+platform console serial
+!
+hostname LAB-CSR1KV-ROUTER-ANSIBLE
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+!
+!
+!
+!
+ip domain name calavelas.net
+!
+!
+!
+login on-success log
+!
+!
+!
+!
+!
+!
+!
+subscriber templating
+! 
+! 
+! 
+! 
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+crypto pki trustpoint TP-self-signed-2344872969
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-2344872969
+ revocation-check none
+ rsakeypair TP-self-signed-2344872969
+!
+!
+crypto pki certificate chain TP-self-signed-2344872969
+ certificate self-signed 01
+  30820330 30820218 A0030201 02020101 300D0609 2A864886 F70D0101 05050030 
+  31312F30 2D060355 04031326 494F532D 53656C66 2D536967 6E65642D 43657274 
+  69666963 6174652D 32333434 38373239 3639301E 170D3230 30363231 32333234 
+  32395A17 0D333030 31303130 30303030 305A3031 312F302D 06035504 03132649 
+  4F532D53 656C662D 5369676E 65642D43 65727469 66696361 74652D32 33343438 
+  37323936 39308201 22300D06 092A8648 86F70D01 01010500 0382010F 00308201 
+  0A028201 0100C854 1668015E 997B8B22 F6ED483A 749B16F0 9E023887 518BDE67 
+  1E5ADDBD 5C9727A6 97CEFD6D F66B0C96 8F98AED6 FF9FD719 7AA445A8 62455AC7 
+  6580A19A 38053BF2 8676E2AA 40CDC876 AB6EA5CD D98BA9A9 B5FCC561 AF52FAEB 
+  141CF969 23F483C3 2722FCED FD1B840A 79860D60 4C35DA84 0CCDA633 34AED4FC 
+  B4E7056D 4669875C 4C1BDDF7 08DCC20E EB6EAB96 82D6E3A1 C2ABEF2E 52D5DE3C 
+  6593BD03 17AB0F38 39740295 CF39231E CE38CCC1 B3129945 A6DD2243 559B0183 
+  1476E703 A2E0D819 29464715 565EA0FA A03FD0AB 138A3F80 1002BB35 E976BF8A 
+  5DEFD4DC B4216CE9 B58913B5 4BA26A46 FCE823CE 41048DFF 20B6B8AE E2EE0CA9 
+  033E18FB 05590203 010001A3 53305130 0F060355 1D130101 FF040530 030101FF 
+  301F0603 551D2304 18301680 147DAAF7 598915D3 CDD0ECE0 7F210480 4269E745 
+  E6301D06 03551D0E 04160414 7DAAF759 8915D3CD D0ECE07F 21048042 69E745E6 
+  300D0609 2A864886 F70D0101 05050003 82010100 0CFA17E6 73C50994 ABE3098B 
+  9B4B627B CBC345B5 F75FA139 8E6765F1 A14E334D 21601CC4 7519B8AD 1B764003 
+  769056AD 65857155 805ACEDD 92642186 3777E4F4 86241380 70C40A8E DF00B82F 
+  3C44D39B 3C803D18 D4CEADED D2B42701 6CF3BBC0 3851C6E4 E111895D 8065C574 
+  EBA79430 04E62865 D1718E87 ABE213A8 C5932833 9B9A0700 18968F72 6F29A26B 
+  73534C2D 3DE5195D 04517F2C 8C5D751A 8B527C8B 18DF51E8 AB4DD6CF 46BF8B16 
+  0103A12C 8A5FB75B C79703DE 70759C72 3D5C7F04 4096F958 586645AB 7C09B4AA 
+  231E3AD8 AD01AC50 0669813B 0DA5BB75 51676B66 9951F653 86B42A91 C6186A60 
+  A1B847F0 287958DE 335CF6A3 31B64C20 C80BF606
+  	quit
+!
+!
+!
+!
+!
+!
+!
+!
+license udi pid CSR1000V sn 9SXGDTFGPJ8
+no license smart enable
+diagnostic bootup level minimal
+!
+spanning-tree extend system-id
+!
+!
+restconf
+!
+username cisco privilege 15 password 0 cisco 
+username gap privilege 15 secret 5 $1$KBrL$f/Bj73l5Xef6voYayEYOK.
+!
+redundancy
+!
+!
+!
+!
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+! 
+! 
+!
+!
+interface Loopback0
+ ip address 1.1.1.10 255.255.255.255
+!
+interface GigabitEthernet1
+ description Manual-Config
+ no ip address
+ shutdown
+ negotiation auto
+ no mop enabled
+ no mop sysid
+!
+interface GigabitEthernet2
+ description Config-with-Ansible
+ no ip address
+ negotiation auto
+ no mop enabled
+ no mop sysid
+!
+interface GigabitEthernet3
+ description Config-with-Ansible MTFK
+ no ip address
+ negotiation auto
+ no mop enabled
+ no mop sysid
+!
+interface GigabitEthernet4
+ ip address 10.1.0.150 255.255.255.0
+ negotiation auto
+ no mop enabled
+ no mop sysid
+!
+ip forward-protocol nd
+no ip http server
+ip http secure-server
+ip http client source-interface GigabitEthernet4
+ip route 0.0.0.0 0.0.0.0 10.1.0.1
+!
+!
+!
+!
+!
+!
+control-plane
+!
+!
+!
+!
+!
+!
+line con 0
+ stopbits 1
+line vty 0 4
+ login local
+line vty 5 15
+ login local
+!
+!
+!
+!
+!
+!
+end

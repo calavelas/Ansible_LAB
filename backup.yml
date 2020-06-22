@@ -1,0 +1,24 @@
+---
+- name: Backup Configuration
+  hosts: LAB
+  gather_facts: false
+  connection: local
+
+  tasks:
+    - name: run multiple commands on remote nodes
+      ios_command:
+        commands:
+          - show run
+
+      register: print_output
+
+    - debug: var=print_output.stdout_lines
+
+    - name: "TASK 2: Ensure outputs/backup folder exists"
+      file:
+        path: "outputs/backup"
+        state: directory
+      run_once: true
+
+    - name: save output to a file
+      copy: content="{{ print_output.stdout[0] }}" dest="outputs/backup/{{ inventory_hostname }}.txt"

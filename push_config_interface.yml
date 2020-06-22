@@ -1,0 +1,33 @@
+---
+- name: "PLAY 1: Infrastructure-as-code using RESTCONF"
+  hosts: LAB
+  connection: local
+  tasks:
+    - name: "TASK 1: Update VRF config with HTTP PUT"
+      uri:
+        url: "{{ API_url }}/data/Cisco-IOS-XE-native:native/Cisco-IOS-XE-native:interface"
+        user: "{{ API_user }}"
+        password: "{{ API_password }}"
+        method: PUT
+        headers:
+          Content-Type: 'application/yang-data+json'
+          Accept: >-
+            application/yang-data+json,
+            application/yang-data.errors+json
+        body_format: json
+        body: "{{ inf_conf }}"
+        validate_certs: false
+        status_code:
+          - 200  # OK
+          - 204  # NO CONTENT
+
+    - name: "TASK 2: Save configuration"
+      uri:
+        url: "{{ API_url }}/operations/cisco-ia:save-config"
+        user: "{{ API_user }}"
+        password: "{{ API_password }}"
+        method: POST
+        headers:
+          Content-Type: "application/yang-data+json"
+          Accept:  "application/yang-data+json"
+        validate_certs: false

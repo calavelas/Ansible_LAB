@@ -1,0 +1,10 @@
+---
+- name: Config username
+  hosts: LAB
+  gather_facts: false
+  connection: local
+
+  tasks:
+  - name: configure username
+    ios_config:
+      lines: username ansible privilege 15 secret P@sssw0rd

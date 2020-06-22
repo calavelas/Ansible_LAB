@@ -1,0 +1,27 @@
+---
+- name: "PLAY 1: TEST CODE using RESTCONF"
+  hosts: LAB
+  connection: local
+  tasks:
+    - name: "TASK 1: Get interface config with RESTCONF"
+      uri:
+        url: "{{ API_url }}/data/Cisco-IOS-XE-native:native/Cisco-IOS-XE-native:interface"
+        user: "{{ API_user }}"
+        password: "{{ API_password }}"
+        method: GET
+        return_content: true
+        headers:
+          Accept: "application/yang-data+json"
+        validate_certs: false
+      register: config
+
+    - name: "TASK 2: Ensure outputs/interface folder exists"
+      file:
+        path: "outputs/interface"
+        state: directory
+      run_once: true
+
+    - name: "TASK 3: Write JSON to disk"
+      copy:
+        content: "{{ config.json | to_nice_json }}"
+        dest: "outputs/interface/{{ inventory_hostname }}.json"

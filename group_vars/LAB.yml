@@ -1,0 +1,4 @@
+---
+API_user: "gap"
+API_password: "cisco"
+API_url: "https://{{ ansible_host }}/restconf"

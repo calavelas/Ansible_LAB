@@ -1,0 +1,256 @@
+{
+    "body": {
+    "Cisco-IOS-XE-native:native": {
+        "Cisco-IOS-XE-diagnostics:diagnostic": {
+            "bootup": {
+                "level": "minimal"
+            }
+        },
+        "boot-end-marker": [
+            null
+        ],
+        "boot-start-marker": [
+            null
+        ],
+        "control-plane": {},
+        "crypto": {
+            "Cisco-IOS-XE-crypto:key": {
+                "generate": {
+                    "rsa": {}
+                }
+            },
+            "Cisco-IOS-XE-crypto:pki": {
+                "certificate": {
+                    "chain": [
+                        {
+                            "certificate": [
+                                {
+                                    "certtype": "self-signed",
+                                    "serial": "01"
+                                }
+                            ],
+                            "name": "TP-self-signed-2344872969"
+                        }
+                    ]
+                },
+                "trustpoint": [
+                    {
+                        "enrollment": {
+                            "selfsigned": [
+                                null
+                            ]
+                        },
+                        "id": "TP-self-signed-2344872969",
+                        "revocation-check": "none",
+                        "rsakeypair": {
+                            "key-label": "TP-self-signed-2344872969"
+                        },
+                        "subject-name": "cn=IOS-Self-Signed-Certificate-2344872969"
+                    }
+                ]
+            }
+        },
+        "hostname": "LAB-CSR1KV-ROUTER-ANSIBLE",
+        "interface": {
+            "GigabitEthernet": [
+                {
+                    "Cisco-IOS-XE-ethernet:negotiation": {
+                        "auto": true
+                    },
+                    "description": "Manual-Config",
+                    "mop": {
+                        "enabled": false,
+                        "sysid": false
+                    },
+                    "name": "1",
+                    "shutdown": [
+                        null
+                    ]
+                },
+                {
+                    "Cisco-IOS-XE-ethernet:negotiation": {
+                        "auto": true
+                    },
+                    "description": "Config-with-Ansible",
+                    "mop": {
+                        "enabled": false,
+                        "sysid": false
+                    },
+                    "name": "2"
+                },
+                {
+                    "Cisco-IOS-XE-ethernet:negotiation": {
+                        "auto": true
+                    },
+                    "description": "Config-with-Ansible MTFK",
+                    "mop": {
+                        "enabled": false,
+                        "sysid": false
+                    },
+                    "name": "3"
+                },
+                {
+                    "Cisco-IOS-XE-ethernet:negotiation": {
+                        "auto": true
+                    },
+                    "ip": {
+                        "address": {
+                            "primary": {
+                                "address": "10.1.0.150",
+                                "mask": "255.255.255.0"
+                            }
+                        }
+                    },
+                    "mop": {
+                        "enabled": false,
+                        "sysid": false
+                    },
+                    "name": "4"
+                }
+            ],
+            "Loopback": [
+                {
+                    "ip": {
+                        "address": {
+                            "primary": {
+                                "address": "192.168.1.100",
+                                "mask": "255.255.255.255"
+                            }
+                        }
+                    },
+                    "name": 0
+                },
+                {
+                    "ip": {
+                        "address": {
+                            "primary": {
+                                "address": "1.1.1.101",
+                                "mask": "255.255.255.255"
+                            }
+                        }
+                    },
+                    "name": 1
+                }
+            ]
+        },
+        "ip": {
+            "Cisco-IOS-XE-http:http": {
+                "client": {
+                    "source-interface": "GigabitEthernet4"
+                },
+                "secure-server": true,
+                "server": false
+            },
+            "domain": {
+                "name": "calavelas.net"
+            },
+            "forward-protocol": {
+                "protocol": "nd"
+            },
+            "route": {
+                "ip-route-interface-forwarding-list": [
+                    {
+                        "fwd-list": [
+                            {
+                                "fwd": "10.1.0.1"
+                            }
+                        ],
+                        "mask": "0.0.0.0",
+                        "prefix": "0.0.0.0"
+                    }
+                ]
+            }
+        },
+        "license": {
+            "udi": {
+                "pid": "CSR1000V",
+                "sn": "9SXGDTFGPJ8"
+            }
+        },
+        "line": {
+            "console": [
+                {
+                    "first": "0",
+                    "stopbits": "1"
+                }
+            ],
+            "vty": [
+                {
+                    "first": 0,
+                    "last": 4,
+                    "login": {
+                        "local": [
+                            null
+                        ]
+                    }
+                },
+                {
+                    "first": 5,
+                    "last": 15,
+                    "login": {
+                        "local": [
+                            null
+                        ]
+                    }
+                }
+            ]
+        },
+        "login": {
+            "on-success": {
+                "log": {}
+            }
+        },
+        "multilink": {
+            "Cisco-IOS-XE-ppp:bundle-name": "authenticated"
+        },
+        "platform": {
+            "Cisco-IOS-XE-platform:console": {
+                "output": "serial"
+            }
+        },
+        "redundancy": {},
+        "service": {
+            "config": [
+                null
+            ],
+            "timestamps": {
+                "debug": {
+                    "datetime": {
+                        "msec": {}
+                    }
+                },
+                "log": {
+                    "datetime": {
+                        "msec": [
+                            null
+                        ]
+                    }
+                }
+            }
+        },
+        "spanning-tree": {
+            "Cisco-IOS-XE-spanning-tree:extend": {
+                "system-id": [
+                    null
+                ]
+            }
+        },
+        "subscriber": {
+            "templating": [
+                null
+            ]
+        },
+        "username": [
+            {
+                "name": "gap",
+                "privilege": 15,
+                "secret": {
+                    "encryption": "5",
+                    "secret": "$1$2B6m$gQxgx2Oqi..Cj865Nkqpg."
+                }
+            }
+        ],
+        "version": "16.9"
+    }
+}
+}

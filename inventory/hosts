@@ -7,3 +7,4 @@ CSR1K
 [LAB:vars]
 ansible_user=gap
 ansible_ssh_pass=cisco
+ansible_network_os=ios

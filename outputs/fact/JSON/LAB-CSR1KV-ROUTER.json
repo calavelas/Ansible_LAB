@@ -1,0 +1,160 @@
+{
+    "ansible_facts": {
+        "ansible_net_all_ipv4_addresses": [
+            "10.1.0.150",
+            "192.168.1.55",
+            "1.1.1.100",
+            "1.1.1.101",
+            "1.1.1.102"
+        ],
+        "ansible_net_all_ipv6_addresses": [],
+        "ansible_net_api": "cliconf",
+        "ansible_net_config": "!\n! Last configuration change at 03:57:35 UTC Mon Jun 22 2020 by NETCONF\n!\nversion 16.9\nservice timestamps debug datetime msec\nservice timestamps log datetime msec\nplatform qfp utilization monitor load 80\nno platform punt-keepalive disable-kernel-core\nplatform console serial\n!\nhostname LAB-CSR1KV-ROUTER\n!\nboot-start-marker\nboot-end-marker\n!\n!\n!\nno aaa new-model\n!\n!\n!\n!\n!\n!\n!\nip domain name calavelas.net\n!\n!\n!\nlogin on-success log\n!\n!\n!\n!\n!\n!\n!\nsubscriber templating\n! \n! \n! \n! \n!\nmultilink bundle-name authenticated\n!\n!\n!\n!\n!\ncrypto pki trustpoint TP-self-signed-2344872969\n enrollment selfsigned\n subject-name cn=IOS-Self-Signed-Certificate-2344872969\n revocation-check none\n rsakeypair TP-self-signed-2344872969\n!\n!\ncrypto pki certificate chain TP-self-signed-2344872969\n certificate self-signed 01\n  30820330 30820218 A0030201 02020101 300D0609 2A864886 F70D0101 05050030 \n  31312F30 2D060355 04031326 494F532D 53656C66 2D536967 6E65642D 43657274 \n  69666963 6174652D 32333434 38373239 3639301E 170D3230 30363231 32333234 \n  32395A17 0D333030 31303130 30303030 305A3031 312F302D 06035504 03132649 \n  4F532D53 656C662D 5369676E 65642D43 65727469 66696361 74652D32 33343438 \n  37323936 39308201 22300D06 092A8648 86F70D01 01010500 0382010F 00308201 \n  0A028201 0100C854 1668015E 997B8B22 F6ED483A 749B16F0 9E023887 518BDE67 \n  1E5ADDBD 5C9727A6 97CEFD6D F66B0C96 8F98AED6 FF9FD719 7AA445A8 62455AC7 \n  6580A19A 38053BF2 8676E2AA 40CDC876 AB6EA5CD D98BA9A9 B5FCC561 AF52FAEB \n  141CF969 23F483C3 2722FCED FD1B840A 79860D60 4C35DA84 0CCDA633 34AED4FC \n  B4E7056D 4669875C 4C1BDDF7 08DCC20E EB6EAB96 82D6E3A1 C2ABEF2E 52D5DE3C \n  6593BD03 17AB0F38 39740295 CF39231E CE38CCC1 B3129945 A6DD2243 559B0183 \n  1476E703 A2E0D819 29464715 565EA0FA A03FD0AB 138A3F80 1002BB35 E976BF8A \n  5DEFD4DC B4216CE9 B58913B5 4BA26A46 FCE823CE 41048DFF 20B6B8AE E2EE0CA9 \n  033E18FB 05590203 010001A3 53305130 0F060355 1D130101 FF040530 030101FF \n  301F0603 551D2304 18301680 147DAAF7 598915D3 CDD0ECE0 7F210480 4269E745 \n  E6301D06 03551D0E 04160414 7DAAF759 8915D3CD D0ECE07F 21048042 69E745E6 \n  300D0609 2A864886 F70D0101 05050003 82010100 0CFA17E6 73C50994 ABE3098B \n  9B4B627B CBC345B5 F75FA139 8E6765F1 A14E334D 21601CC4 7519B8AD 1B764003 \n  769056AD 65857155 805ACEDD 92642186 3777E4F4 86241380 70C40A8E DF00B82F \n  3C44D39B 3C803D18 D4CEADED D2B42701 6CF3BBC0 3851C6E4 E111895D 8065C574 \n  EBA79430 04E62865 D1718E87 ABE213A8 C5932833 9B9A0700 18968F72 6F29A26B \n  73534C2D 3DE5195D 04517F2C 8C5D751A 8B527C8B 18DF51E8 AB4DD6CF 46BF8B16 \n  0103A12C 8A5FB75B C79703DE 70759C72 3D5C7F04 4096F958 586645AB 7C09B4AA \n  231E3AD8 AD01AC50 0669813B 0DA5BB75 51676B66 9951F653 86B42A91 C6186A60 \n  A1B847F0 287958DE 335CF6A3 31B64C20 C80BF606\n  \tquit\n!\n!\n!\n!\n!\n!\n!\n!\nlicense udi pid CSR1000V sn 9SXGDTFGPJ8\nno license smart enable\ndiagnostic bootup level minimal\n!\nspanning-tree extend system-id\n!\n!\nrestconf\n!\nusername gap privilege 15 secret 5 $1$KBrL$f/Bj73l5Xef6voYayEYOK.\nusername VALUE_SPECIFIED_IN_NO_LOG_PARAMETER privilege 15 secret 5 $1$2B6m$gQxgx2Oqi..Cj865Nkqpg.\n!\nredundancy\n!\n!\n!\n!\n!\n!\n! \n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n! \n! \n!\n!\ninterface Loopback0\n ip address 1.1.1.100 255.255.255.255\n!\ninterface Loopback1\n ip address 1.1.1.101 255.255.255.255\n!\ninterface Loopback2\n ip address 1.1.1.102 255.255.255.255\n!\ninterface GigabitEthernet1\n description Manual-Config\n ip address 192.168.1.55 255.255.255.0\n negotiation auto\n no mop enabled\n no mop sysid\n!\ninterface GigabitEthernet2\n description Config-with-Ansible\n no ip address\n negotiation auto\n no mop enabled\n no mop sysid\n!\ninterface GigabitEthernet3\n description Config-with-Ansible\n no ip address\n negotiation auto\n no mop enabled\n no mop sysid\n!\ninterface GigabitEthernet4\n description Config-with-Ansible\n ip address 10.1.0.150 255.255.255.0\n negotiation auto\n no mop enabled\n no mop sysid\n!\nip forward-protocol nd\nno ip http server\nip http secure-server\nip http client source-interface GigabitEthernet4\nip route 0.0.0.0 0.0.0.0 10.1.0.1\n!\n!\n!\n!\n!\n!\ncontrol-plane\n!\n!\n!\n!\n!\n!\nline con 0\n stopbits 1\nline vty 0 4\n login local\nline vty 5 15\n login local\n!\n!\n!\n!\n!\n!\nend",
+        "ansible_net_filesystems": [
+            "bootflash:"
+        ],
+        "ansible_net_filesystems_info": {
+            "bootflash:": {
+                "spacefree_kb": 6877384.0,
+                "spacetotal_kb": 7712692.0
+            }
+        },
+        "ansible_net_gather_network_resources": [],
+        "ansible_net_gather_subset": [
+            "hardware",
+            "default",
+            "interfaces",
+            "config"
+        ],
+        "ansible_net_hostname": "LAB-CSR1KV-ROUTER",
+        "ansible_net_image": "bootflash:packages.conf",
+        "ansible_net_interfaces": {
+            "GigabitEthernet1": {
+                "bandwidth": 1000000,
+                "description": "Manual-Config",
+                "duplex": "Full",
+                "ipv4": [
+                    {
+                        "address": "192.168.1.55",
+                        "subnet": "24"
+                    }
+                ],
+                "lineprotocol": "up",
+                "macaddress": "5000.0001.0000",
+                "mediatype": "Virtual",
+                "mtu": 1500,
+                "operstatus": "up",
+                "type": "CSR vNIC"
+            },
+            "GigabitEthernet2": {
+                "bandwidth": 1000000,
+                "description": "Config-with-Ansible",
+                "duplex": "Full",
+                "ipv4": [],
+                "lineprotocol": "up",
+                "macaddress": "5000.0001.0001",
+                "mediatype": "Virtual",
+                "mtu": 1500,
+                "operstatus": "up",
+                "type": "CSR vNIC"
+            },
+            "GigabitEthernet3": {
+                "bandwidth": 1000000,
+                "description": "Config-with-Ansible",
+                "duplex": "Full",
+                "ipv4": [],
+                "lineprotocol": "up",
+                "macaddress": "5000.0001.0002",
+                "mediatype": "Virtual",
+                "mtu": 1500,
+                "operstatus": "up",
+                "type": "CSR vNIC"
+            },
+            "GigabitEthernet4": {
+                "bandwidth": 1000000,
+                "description": "Config-with-Ansible",
+                "duplex": "Full",
+                "ipv4": [
+                    {
+                        "address": "10.1.0.150",
+                        "subnet": "24"
+                    }
+                ],
+                "lineprotocol": "up",
+                "macaddress": "5000.0001.0003",
+                "mediatype": "Virtual",
+                "mtu": 1500,
+                "operstatus": "up",
+                "type": "CSR vNIC"
+            },
+            "Loopback0": {
+                "bandwidth": 8000000,
+                "description": null,
+                "duplex": null,
+                "ipv4": [
+                    {
+                        "address": "1.1.1.100",
+                        "subnet": "32"
+                    }
+                ],
+                "lineprotocol": "up",
+                "macaddress": null,
+                "mediatype": null,
+                "mtu": 1514,
+                "operstatus": "up",
+                "type": null
+            },
+            "Loopback1": {
+                "bandwidth": 8000000,
+                "description": null,
+                "duplex": null,
+                "ipv4": [
+                    {
+                        "address": "1.1.1.101",
+                        "subnet": "32"
+                    }
+                ],
+                "lineprotocol": "up",
+                "macaddress": null,
+                "mediatype": null,
+                "mtu": 1514,
+                "operstatus": "up",
+                "type": null
+            },
+            "Loopback2": {
+                "bandwidth": 8000000,
+                "description": null,
+                "duplex": null,
+                "ipv4": [
+                    {
+                        "address": "1.1.1.102",
+                        "subnet": "32"
+                    }
+                ],
+                "lineprotocol": "up",
+                "macaddress": null,
+                "mediatype": null,
+                "mtu": 1514,
+                "operstatus": "up",
+                "type": null
+            }
+        },
+        "ansible_net_iostype": "IOS-XE",
+        "ansible_net_memfree_mb": 1858658.53125,
+        "ansible_net_memtotal_mb": 2182116.1328125,
+        "ansible_net_model": "CSR1000V",
+        "ansible_net_neighbors": {},
+        "ansible_net_python_version": "2.7.16",
+        "ansible_net_serialnum": "9SXGDTFGPJ8",
+        "ansible_net_system": "ios",
+        "ansible_net_version": "16.09.05",
+        "ansible_network_resources": {},
+        "discovered_interpreter_python": "/usr/bin/python"
+    },
+    "changed": false,
+    "failed": false,
+    "warnings": [
+        "default value for `gather_subset` will be changed to `min` from `!config` v2.11 onwards",
+        "Platform darwin on host LAB-CSR1KV-ROUTER is using the discovered Python interpreter at /usr/bin/python, but future installation of another Python interpreter could change this. See https://docs.ansible.com/ansible/2.9/reference_appendices/interpreter_discovery.html for more information."
+    ]
+}

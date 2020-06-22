@@ -1,0 +1,24 @@
+---
+- name: Backup Configuration
+  hosts: LAB
+  gather_facts: false
+  connection: local
+
+  tasks:
+    - name: run multiple commands on remote nodes
+      ios_facts:
+        gather_subset: all
+      register: fact
+
+    - debug: var=fact.stdout_lines
+
+    - name: "TASK 2: Ensure outputs/fact/JSON folder exists"
+      file:
+        path: "outputs/fact/JSON"
+        state: directory
+      run_once: true
+
+    - name: "TASK 3: Write JSON to disk"
+      copy:
+        content: "{{ fact | to_nice_json }}"
+        dest: "outputs/fact/JSON/{{ inventory_hostname }}.json"

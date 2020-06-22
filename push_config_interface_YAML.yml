@@ -2,8 +2,12 @@
 - name: "PLAY 1: Infrastructure-as-code using RESTCONF"
   hosts: LAB
   connection: local
+  vars:
+    config_file: "{{ lookup('file','outputs/interface/YAML/{{ inventory_hostname }}.yml') | from_yaml }}"
+    config_file_json: "{{ config_file | to_nice_json }}"
+
   tasks:
-    - name: "TASK 1: Update VRF config with HTTP PUT"
+    - name: "TASK 1: Update Interface config with HTTP PUT"
       uri:
         url: "{{ API_url }}/data/Cisco-IOS-XE-native:native/Cisco-IOS-XE-native:interface"
         user: "{{ API_user }}"
@@ -15,7 +19,7 @@
             application/yang-data+json,
             application/yang-data.errors+json
         body_format: json
-        body: "{{ inf_conf }}"
+        body: "{{ config_file_json }}"
         validate_certs: false
         status_code:
           - 200  # OK

@@ -3,7 +3,7 @@
   hosts: LAB
   connection: local
   vars:
-    config_file: "{{ lookup('file','outputs/config/JSON/{{ inventory_hostname }}.json') }}"
+      config_file: "{{ lookup('file','outputs/config/JSON/{{ inventory_hostname }}.json') }}"
 
   tasks:
     - name: "TASK 1: Update config with HTTP PUT"

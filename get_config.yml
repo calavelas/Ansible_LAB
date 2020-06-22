@@ -21,16 +21,16 @@
         state: directory
       run_once: true
 
-    - name: "TASK 3: Write JSON to disk"
+    - name: "TASK 3: Ensure outputs/config/YAML folder exists"
+      file:
+        path: "outputs/config/YAML"
+        state: directory
+      run_once: true
+
+    - name: "TASK 4: Write JSON to disk"
       copy:
         content: "{{ config.json | to_nice_json }}"
         dest: "outputs/config/JSON/{{ inventory_hostname }}.json"
-
-    - name: "TASK 4: Ensure outputs/config/YAML folder exists"
-      file:
-        path: "outputs/config/JSON"
-        state: directory
-      run_once: true
 
     - name: "TASK 5: Write YAML to disk"
       copy:

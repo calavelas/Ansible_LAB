@@ -6,19 +6,25 @@
                     "auto": true
                 },
                 "description": "Manual-Config",
+                "ip": {
+                    "address": {
+                        "primary": {
+                            "address": "192.168.1.55",
+                            "mask": "255.255.255.0"
+                        }
+                    }
+                },
                 "mop": {
                     "enabled": false,
                     "sysid": false
                 },
-                "name": "1",
-                "shutdown": [
-                    null
-                ]
+                "name": "1"
             },
             {
                 "Cisco-IOS-XE-ethernet:negotiation": {
                     "auto": true
                 },
+                "description": "Config-with-Ansible",
                 "mop": {
                     "enabled": false,
                     "sysid": false
@@ -29,6 +35,7 @@
                 "Cisco-IOS-XE-ethernet:negotiation": {
                     "auto": true
                 },
+                "description": "Config-with-Ansible",
                 "mop": {
                     "enabled": false,
                     "sysid": false
@@ -39,6 +46,7 @@
                 "Cisco-IOS-XE-ethernet:negotiation": {
                     "auto": true
                 },
+                "description": "Config-with-Ansible",
                 "ip": {
                     "address": {
                         "primary": {
@@ -52,6 +60,41 @@
                     "sysid": false
                 },
                 "name": "4"
+            }
+        ],
+        "Loopback": [
+            {
+                "ip": {
+                    "address": {
+                        "primary": {
+                            "address": "1.1.1.100",
+                            "mask": "255.255.255.255"
+                        }
+                    }
+                },
+                "name": 0
+            },
+            {
+                "ip": {
+                    "address": {
+                        "primary": {
+                            "address": "1.1.1.101",
+                            "mask": "255.255.255.255"
+                        }
+                    }
+                },
+                "name": 1
+            },
+            {
+                "ip": {
+                    "address": {
+                        "primary": {
+                            "address": "1.1.1.102",
+                            "mask": "255.255.255.255"
+                        }
+                    }
+                },
+                "name": 2
             }
         ]
     }

@@ -15,13 +15,24 @@
         validate_certs: false
       register: config
 
-    - name: "TASK 2: Ensure outputs/interface folder exists"
+    - name: "TASK 2: Ensure outputs/interface/JSON folder exists"
       file:
-        path: "outputs/interface"
+        path: "outputs/interface/JSON"
         state: directory
       run_once: true
 
-    - name: "TASK 3: Write JSON to disk"
+    - name: "TASK 3: Ensure outputs/interface/YAML folder exists"
+      file:
+        path: "outputs/interface/YAML"
+        state: directory
+      run_once: true
+
+    - name: "TASK 4: Write JSON to disk"
       copy:
         content: "{{ config.json | to_nice_json }}"
-        dest: "outputs/interface/{{ inventory_hostname }}.json"
+        dest: "outputs/interface/JSON/{{ inventory_hostname }}.json"
+
+    - name: "TASK 5: Write YAML to disk"
+      copy:
+        content: "{{ config.json | to_nice_yaml }}"
+        dest: "outputs/interface/YAML/{{ inventory_hostname }}.yml"

@@ -2,10 +2,13 @@
 - name: "PLAY 1: Infrastructure-as-code using RESTCONF"
   hosts: LAB
   connection: local
+  vars:
+      config_file: "{{ lookup('file','outputs/interface/JSON/{{ inventory_hostname }}.json') }}"
+  
   tasks:
-    - name: "TASK 1: Update config with HTTP PUT"
+    - name: "TASK 1: Update Interface config with HTTP PUT"
       uri:
-        url: "{{ API_url }}/data/Cisco-IOS-XE-native:native/"
+        url: "{{ API_url }}/data/Cisco-IOS-XE-native:native/Cisco-IOS-XE-native:interface"
         user: "{{ API_user }}"
         password: "{{ API_password }}"
         method: PUT
@@ -15,7 +18,7 @@
             application/yang-data+json,
             application/yang-data.errors+json
         body_format: json
-        body: "{{ body }}"
+        body: "{{ config_file }}"
         validate_certs: false
         status_code:
           - 200  # OK
